@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="todos">
+        <item name="learn">Learn videos</item>
+        <item name="brushup">watch</item>
+        <item name="breakfast">what to do</item>
+        <item name="breakfast">I dont know</item>
+        <item name="breakfast">Do some thing</item>
+        <item name="breakfast">Na na na</item>
+        <item name="breakfast">Cool</item>
+        <item name="breakfast">pick up kid</item>
+        <item name="breakfast">submit document</item>
+        <item name="breakfast">sales appointment</item>
+        <item name="breakfast">clear inbox</item>
+        <item name="breakfast">lunch</item>
+        <item name="breakfast">diner</item>
+        <item name="breakfast">walk</item>
+    </string-array>
+</resources>
