@@ -32,6 +32,7 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -75,7 +76,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
 		// of the app.
-		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
+		mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(),this);
 
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
@@ -138,56 +139,27 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	 */
 	public static class AppSectionsPagerAdapter extends FragmentStatePagerAdapter {
 
-		public AppSectionsPagerAdapter(FragmentManager fm) {
+		private Context context;
+		public AppSectionsPagerAdapter(FragmentManager fm, Context context) {
 			super(fm);
+			this.context = context;
 		}
 
 		@Override
 		public Fragment getItem(int i) {
-			switch (i) {
-			case 0:
-				// The first section of the app is the most interesting -- it
-				// offers
-				// a launchpad into the other demonstrations in this example
-				// application.
-				return new MyListFragment();
-
-			default:
-				// The other sections of the app are dummy placeholders.
-				Fragment fragment = new DummySectionFragment();
-				Bundle args = new Bundle();
-				args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-				fragment.setArguments(args);
-				return fragment;
-			}
+				Bundle bundle = new Bundle();
+				bundle.putInt("taskType", i+1);
+				return TaskListFragment.instantiate(context, TaskListFragment.class.getName(), bundle);
 		}
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 2;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
 			return "Section " + (position + 1);
-		}
-	}
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_section_dummy, container, false);
-			Bundle args = getArguments();
-			((TextView) rootView.findViewById(android.R.id.text1)).setText(getString(
-					R.string.dummy_section_text, args.getInt(ARG_SECTION_NUMBER)));
-			return rootView;
 		}
 	}
 
