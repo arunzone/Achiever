@@ -17,10 +17,10 @@
     <color name="magenta">#FF00FF</color>
 
     <array name="rainbow">
+        <item>@color/mango_yellow</item>
         <item>@color/torquise</item>
         <item>@color/purple</item>
         <item>@color/parrot_green</item>
-        <item>@color/mango_yellow</item>
         <item>@color/neat_red</item>
         <item>@color/bright_pink</item>
         <item>@color/yellow</item>
